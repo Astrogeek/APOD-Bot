@@ -9,6 +9,8 @@ from discord.ext import commands, tasks
 client = commands.Bot(command_prefix=commands.when_mentioned_or('.'))
 client.remove_command('help')
 
+aopdkey = "AOPDKEY"
+
 @client.command()
 async def apod(ctx):
     client.ses = aiohttp.ClientSession()
@@ -36,6 +38,10 @@ async def apod(ctx):
                             
                         )
            
+@client.command()
+async def help(ctx):
+    await ctx.send("Coming soon!")
+
 @client.event
 async def on_ready():
     DiscordComponents(client)
